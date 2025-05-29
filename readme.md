@@ -12,3 +12,20 @@ This is a boilerplate for a simple HTML / Tailwind CSS / JavaScript project. It 
 - Vanilla JavaScript for interactivity
 - Simple and clean code structure
 - No external dependencies
+
+NEWNEW
+
+# KnowAI
+
+## Goals
+- data + AI = tailored response.
+
+  Create a AI bot that will hook on any of the current sites and have data driven response based on the customers data. Web Design plus LLM support.
+
+
+
+
+## Resources
+- https://www.tensorlake.ai/pricing
+- https://platform.openai.com/docs/assistants/tools/file-search
+- https://platform.openai.com/docs/api-reference/files/create

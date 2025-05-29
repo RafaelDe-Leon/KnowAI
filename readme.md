@@ -18,14 +18,46 @@ NEWNEW
 # KnowAI
 
 ## Goals
+
 - data + AI = tailored response.
 
   Create a AI bot that will hook on any of the current sites and have data driven response based on the customers data. Web Design plus LLM support.
 
-
-
-
 ## Resources
+
 - https://www.tensorlake.ai/pricing
 - https://platform.openai.com/docs/assistants/tools/file-search
 - https://platform.openai.com/docs/api-reference/files/create
+
+# Running the Project
+
+To run the project, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Navigate to the project directory:
+
+   ```bash
+   cd <project-directory>
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Run npm run build to build the project:
+
+   ```bash
+   npm run build
+   ```
+
+5. Open the `index.html` file in your web browser.
+6. You can also use a local server to serve the files, for example using `live-server` or `http-server`:
+   ```bash
+   npx live-server
+   ```
+7. Open your browser and navigate to `http://localhost:5500` (or the port specified by your local server).

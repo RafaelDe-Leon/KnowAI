@@ -4,29 +4,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tailwind Boilerplate</title>
+  <title>Know AI</title>
   <link rel="stylesheet" href="dist/output.css" />
   <script src="./src/scripts/script.js" defer></script>
 </head>
 
-<body class="bg-gray-100 text-gray-900 p-4">
-  <h1 class="text-2xl font-bold">Hello, Tailwind!</h1>
-  <button id="btn" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-sm hover:bg-yellow-600">
-    Click Me
-  </button>
-  <button onclick="alert('This is agent mode')" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-sm hover:bg-blue-950">
-    Agent Mode
-  </button>
-  <section
-    class="min-h-screen flex flex-col items-center justify-center bg-linear-to-br from-blue-500 to-purple-600 text-white text-center px-4">
-    <h1 class="text-4xl md:text-6xl font-bold mb-6">Welcome to My Project</h1>
-    <p class="text-lg md:text-xl mb-8">This is a reusable Tailwind CSS boilerplate.</p>
-    <button class="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition">
-      Get Started
-    </button>
-  </section>
+<body>
+  <!-- Chatbot modal -->
+  <div id="chatbot-modal"
+    class="fixed top-1/2 left-1/2 z-50 w-[500px] h-[500px] rounded-lg bg-white shadow-xl hidden flex-col -translate-x-1/2 -translate-y-1/2">
+    <div class="flex flex-col h-full">
+      <div class="flex items-center justify-between border-b p-4">
+        <h2 class="text-lg font-semibold text-gray-900">Chat Assistant</h2>
+        <button id="close-chatbot-btn"
+          class="h-8 w-8 flex items-center justify-center text-gray-500 hover:text-gray-700" aria-label="Close chatbot">
+          <!-- X icon -->
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex-1 p-4 flex flex-col">
+        <div class="flex-1 overflow-y-auto">
+          <!-- Example user message -->
+          <div class="mb-4 flex justify-end">
+            <div class="max-w-[80%] rounded-lg px-4 py-2 bg-[#adb2ab] text-gray-900">
+              <p class="text-sm">Hello, I need some help!</p>
+            </div>
+          </div>
+          <!-- Example bot message -->
+          <div class="mb-4 flex justify-start">
+            <div class="max-w-[80%] rounded-lg px-4 py-2 bg-gray-100 text-gray-900">
+              <p class="text-sm">Sure! How can I assist you today?</p>
+            </div>
+          </div>
+          <!-- Typing indicator -->
+          <div class="mb-4 flex justify-start">
+            <div class="max-w-[80%] rounded-lg bg-gray-100 px-4 py-2">
+              <p class="text-sm text-gray-900">Typing...</p>
+            </div>
+          </div>
+          <!-- End of messages -->
+          <div></div>
+        </div>
+        <form class="border-t pt-2 mt-2">
+          <div class="flex gap-2">
+            <textarea placeholder="Type your message..."
+              class="min-h-10 flex-1 resize-none bg-white px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a0aeae] text-gray-900"></textarea>
+            <button type="submit"
+              class="bg-[#a0aeae] text-gray-900 hover:bg-[#a0aeae]/90 rounded-md px-4 py-2 flex items-center justify-center">
+              <!-- Send icon (Heroicons paper-airplane) -->
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.5l7.5 7.5 7.5-7.5M12 3v15" />
+              </svg>
+              <span class="sr-only">Send</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-  
+  <button id="open-chatbot-btn"
+    class="fixed bottom-4 right-4 z-50 rounded-full shadow-lg bg-[#a0aeae] text-gray-900 hover:bg-[#a0aeae]/90 w-12 h-12 flex items-center justify-center"
+    aria-label="Open chatbot">
+    <span>Chat</span>
+  </button>
 
 </body>
 

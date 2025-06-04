@@ -61,3 +61,17 @@ To run the project, follow these steps:
    npx live-server
    ```
 7. Open your browser and navigate to `http://localhost:5500` (or the port specified by your local server).
+
+## Console PDF Assistant
+
+The repository now includes a simple Retrieval Augmented Generation (RAG) script for querying a local PDF with OpenAI models.
+
+1. Create a `.env` file in the project root containing your OpenAI API key:
+   ```bash
+   echo "OPENAI_API_KEY=your-key" > .env
+   ```
+2. Run the assistant and provide a path to a PDF:
+   ```bash
+   npm run rag example.pdf
+   ```
+3. Ask questions in the console. Type `exit` to quit.

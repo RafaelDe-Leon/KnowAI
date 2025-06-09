@@ -6,58 +6,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Know AI</title>
   <link rel="stylesheet" href="dist/output.css" />
+  <link rel="stylesheet" href="./src/styles/globals.css" />
   <script src="./src/scripts/script.js" defer></script>
+  
 </head>
 
 <body>
   <!-- Chatbot modal -->
   <div id="chatbot-modal"
-    class="fixed top-1/2 left-1/2 z-50 w-[500px] h-[500px] rounded-lg bg-white shadow-xl hidden flex-col -translate-x-1/2 -translate-y-1/2">
-    <div class="flex flex-col h-full">
+    class="fixed top-1/2 left-1/2 z-50 w-[500px] h-[500px] rounded-lg bg-white shadow-xl flex-col -translate-x-1/2 -translate-y-1/2">
+    <div class="flex flex-col h-full flex-1">
       <div class="flex items-center justify-between border-b p-4">
         <h2 class="text-lg font-semibold text-gray-900">Chat Assistant</h2>
         <button id="close-chatbot-btn"
-          class="h-8 w-8 flex items-center justify-center text-gray-500 hover:text-gray-700" aria-label="Close chatbot">
+          class="h-8 w-8 flex items-center justify-center text-gray-500 hover:text-gray-700 cursor-pointer" aria-label="Close chatbot">
           <!-- X icon -->
           <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
-      <div class="flex-1 p-4 flex flex-col">
-        <div class="flex-1 overflow-y-auto">
-          <!-- Example user message -->
-          <div class="mb-4 flex justify-end">
-            <div class="max-w-[80%] rounded-lg px-4 py-2 bg-[#adb2ab] text-gray-900">
-              <p class="text-sm">Hello, I need some help!</p>
-            </div>
-          </div>
-          <!-- Example bot message -->
+      <div class="flex-1 p-4 flex flex-col min-h-0 overflow-y-auto">
+        <div id="chat-messages" class="flex-1 pr-2 min-h-0 overflow-y-auto">
+          <!-- Prewritten assistant message -->
           <div class="mb-4 flex justify-start">
             <div class="max-w-[80%] rounded-lg px-4 py-2 bg-gray-100 text-gray-900">
-              <p class="text-sm">Sure! How can I assist you today?</p>
+              <p class="text-sm">How can I help you?</p>
             </div>
+            
           </div>
-          <!-- Typing indicator -->
           <div class="mb-4 flex justify-start">
-            <div class="max-w-[80%] rounded-lg bg-gray-100 px-4 py-2">
-              <p class="text-sm text-gray-900">Typing...</p>
+            <div class="max-w-[80%] rounded-lg px-4 py-2 bg-gray-100 text-gray-900">
+              <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum esse dolorum officiis numquam distinctio iste quasi saepe dignissimos id dicta, veniam, error ut? Expedita atque, et tempore dolor dolorum molestiae consectetur. Ipsum a, officia voluptatum ea eos asperiores animi molestiae nesciunt perspiciatis veniam ullam deserunt? At amet nesciunt voluptatem nihil consequuntur ducimus, rem omnis praesentium quia a rerum tempore aliquid eveniet doloribus voluptatum pariatur officia esse quisquam minus, harum ipsam modi est excepturi! Optio error libero, odio tenetur quas debitis consectetur voluptas doloremque odit voluptatibus. Optio hic eaque asperiores nulla iusto iure quaerat reprehenderit, ut aperiam tempore debitis accusantium modi enim consectetur temporibus deleniti ratione repellat dolore unde aspernatur ea pariatur rerum laboriosam nemo. Ducimus, ipsa eos? Consequatur fugiat quidem culpa temporibus sint harum aspernatur laborum at neque deserunt eveniet sunt id maxime ut debitis saepe, consequuntur atque voluptate voluptatibus modi! Illum vel quo architecto quis, modi nam sed aspernatur doloribus accusantium, veniam natus, sint maxime aut itaque! Reprehenderit eligendi expedita nesciunt iure fuga, necessitatibus quidem incidunt, illo, voluptate eum soluta ratione cum eos assumenda dolorem voluptatum excepturi! Quam qui deleniti odit explicabo! Obcaecati iste, nesciunt ad nemo excepturi consequatur delectus distinctio rerum? Temporibus suscipit harum corrupti dolore voluptate unde?</p>
             </div>
+            
           </div>
-          <!-- End of messages -->
-          <div></div>
+          <div class="mb-4 flex justify-start">
+            <div class="max-w-[80%] rounded-lg px-4 py-2 bg-gray-100 text-gray-900">
+              <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum esse dolorum officiis numquam distinctio iste quasi saepe dignissimos id dicta, veniam, error ut? Expedita atque, et tempore dolor dolorum molestiae consectetur. Ipsum a, officia voluptatum ea eos asperiores animi molestiae nesciunt perspiciatis veniam ullam deserunt? At amet nesciunt voluptatem nihil consequuntur ducimus, rem omnis praesentium quia a rerum tempore aliquid eveniet doloribus voluptatum pariatur officia esse quisquam minus, harum ipsam modi est excepturi! Optio error libero, odio tenetur quas debitis consectetur voluptas doloremque odit voluptatibus. Optio hic eaque asperiores nulla iusto iure quaerat reprehenderit, ut aperiam tempore debitis accusantium modi enim consectetur temporibus deleniti ratione repellat dolore unde aspernatur ea pariatur rerum laboriosam nemo. Ducimus, ipsa eos? Consequatur fugiat quidem culpa temporibus sint harum aspernatur laborum at neque deserunt eveniet sunt id maxime ut debitis saepe, consequuntur atque voluptate voluptatibus modi! Illum vel quo architecto quis, modi nam sed aspernatur doloribus accusantium, veniam natus, sint maxime aut itaque! Reprehenderit eligendi expedita nesciunt iure fuga, necessitatibus quidem incidunt, illo, voluptate eum soluta ratione cum eos assumenda dolorem voluptatum excepturi! Quam qui deleniti odit explicabo! Obcaecati iste, nesciunt ad nemo excepturi consequatur delectus distinctio rerum? Temporibus suscipit harum corrupti dolore voluptate unde?</p>
+            </div>
+            
+          </div>
+          <div class="mb-4 flex justify-start">
+            <div class="max-w-[80%] rounded-lg px-4 py-2 bg-gray-100 text-gray-900">
+              <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum esse dolorum officiis numquam distinctio iste quasi saepe dignissimos id dicta, veniam, error ut? Expedita atque, et tempore dolor dolorum molestiae consectetur. Ipsum a, officia voluptatum ea eos asperiores animi molestiae nesciunt perspiciatis veniam ullam deserunt? At amet nesciunt voluptatem nihil consequuntur ducimus, rem omnis praesentium quia a rerum tempore aliquid eveniet doloribus voluptatum pariatur officia esse quisquam minus, harum ipsam modi est excepturi! Optio error libero, odio tenetur quas debitis consectetur voluptas doloremque odit voluptatibus. Optio hic eaque asperiores nulla iusto iure quaerat reprehenderit, ut aperiam tempore debitis accusantium modi enim consectetur temporibus deleniti ratione repellat dolore unde aspernatur ea pariatur rerum laboriosam nemo. Ducimus, ipsa eos? Consequatur fugiat quidem culpa temporibus sint harum aspernatur laborum at neque deserunt eveniet sunt id maxime ut debitis saepe, consequuntur atque voluptate voluptatibus modi! Illum vel quo architecto quis, modi nam sed aspernatur doloribus accusantium, veniam natus, sint maxime aut itaque! Reprehenderit eligendi expedita nesciunt iure fuga, necessitatibus quidem incidunt, illo, voluptate eum soluta ratione cum eos assumenda dolorem voluptatum excepturi! Quam qui deleniti odit explicabo! Obcaecati iste, nesciunt ad nemo excepturi consequatur delectus distinctio rerum? Temporibus suscipit harum corrupti dolore voluptate unde?</p>
+            </div>
+            
+          </div>
         </div>
         <form id="chat-form" class="border-t pt-2 mt-2">
           <div class="flex gap-2">
-            <textarea placeholder="Type your message..."
+            <textarea id="chat-input" placeholder="Type your message..." rows="1"
               class="min-h-10 flex-1 resize-none bg-white px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a0aeae] text-gray-900"></textarea>
             <button type="submit"
-              class="bg-[#a0aeae] text-gray-900 hover:bg-[#a0aeae]/90 rounded-md px-4 py-2 flex items-center justify-center">
+              class="bg-[#a0aeae] text-gray-900 hover:bg-[#a0aeae]/90 rounded-md px-4 py-2 flex items-center justify-center cursor-pointer">
               <!-- Send icon (Heroicons paper-airplane) -->
               <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.5l7.5 7.5 7.5-7.5M12 3v15" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
               </svg>
-              <span class="sr-only">Send</span>
+            <span class="sr-only">Send</span>
             </button>
           </div>
         </form>
@@ -66,7 +73,7 @@
   </div>
 
   <button id="open-chatbot-btn"
-    class="fixed bottom-4 right-4 z-50 rounded-full shadow-lg bg-[#a0aeae] text-gray-900 hover:bg-[#a0aeae]/90 w-12 h-12 flex items-center justify-center"
+    class="fixed bottom-4 right-4 z-50 rounded-full shadow-lg bg-[#a0aeae] text-gray-900 hover:bg-[#a0aeae]/90 w-12 h-12 flex items-center justify-center cursor-pointer"
     aria-label="Open chatbot">
     <span>Chat</span>
   </button>

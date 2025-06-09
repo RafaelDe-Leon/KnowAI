@@ -2,6 +2,12 @@ const fs = require('fs')
 const pdfParse = require('pdf-parse')
 const { OpenAI } = require('openai')
 require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') })
+const express = require('express')
+const cors = require('cors')
+
+const app = express()
+app.use(cors())
+app.use(express.json())
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 console.log('OpenAI API Key:', process.env.OPENAI_API_KEY ? 'Loaded' : 'Not set')
@@ -66,25 +72,29 @@ async function answerQuestion(store, question, k = 3) {
   return chat.choices[0].message.content.trim()
 }
 
-;(async () => {
-  if (!process.argv[2]) {
-    console.error('Usage: node rag.js <path-to-pdf>')
+let store = null;
+
+// Load the PDF and create the store once at startup
+(async () => {
+  try {
+    store = await createStore('sample.pdf')
+    console.log('Store loaded')
+  } catch (e) {
+    console.error('Error during store creation:', e)
     process.exit(1)
   }
-  const store = await createStore(process.argv[2])
-  console.log('Type your question (or "exit" to quit)')
-  const rl = require('readline').createInterface({ input: process.stdin, output: process.stdout })
-  const ask = () => {
-    rl.question('> ', async q => {
-      if (q.toLowerCase() === 'exit') return rl.close()
-      try {
-        const answer = await answerQuestion(store, q)
-        console.log(answer)
-      } catch (e) {
-        console.error('Error:', e.message)
-      }
-      ask()
-    })
-  }
-  ask()
 })()
+
+app.post('/ask', async (req, res) => {
+  const { question } = req.body
+  if (!store) return res.status(503).json({ error: 'Store not ready' })
+  try {
+    const answer = await answerQuestion(store, question)
+    res.json({ answer })
+  } catch (e) {
+    res.status(500).json({ error: e.message })
+  }
+})
+
+const PORT = 3001
+app.listen(PORT, () => console.log(`RAG server running on port ${PORT}`))
